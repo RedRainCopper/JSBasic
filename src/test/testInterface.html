@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Interface</title>
+		<meta name="author" content="Administrator" />
+		<link rel="" href="" type="text/css"/>
+		<script type="text/javascript" charset="utf-8">
+			// js 实现java接口实现的编程模式
+			// 实现方法：1 声明式  //2 属性检测方法 // 3 鸭式辨型法
+			// 2 属性检测法 ：通过检测实例对象有没有接口的方法属性来判断
+			// 2.1 声明接口的
+			function Interface(interfaceMethod){
+				this.interfaceMethod = interfaceMethod;
+			}
+			// 2.2 提供给定对象的判别方法
+			function isImplementsMthods(instance){
+				if(!checkInterface(instance)){
+					throw new Error("the instance does not implements interface completely!");
+				}
+			}
+			function checkInterface(instance){
+				var isImpleted = false;
+				// for(instance){
+// 					
+				// }
+				for(var method in Interface.interfaceMethod){
+					if(method){
+						
+					}
+				}
+				
+			}
+			// 2.3 测试
+		</script>
+	</head>
+	<body>
+
+	</body>
+</html>
+

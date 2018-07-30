@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>javascrip模仿静态方法</title>
+		<meta name="author" content="Administrator" />
+		<link rel="" href="" type="text/css"/>
+		<script src="test2file.js"></script>
+		<!-- Date: 2016-04-11 -->
+		<script type="text/javascript" charset="utf-8">
+           function obj(){
+           	alert("this is obj!");
+           	this.look = function (){
+           		alert("this is a fun's method");
+           	};
+           };
+           
+           obj.eat = function (){
+           	alert("as a obj's static method!");
+           };
+           
+           obj.prototype.say = function (){
+           	alert("this is a obj's method");
+           };
+           
+           //obj(); // 普通方法调用
+           //obj.eat(); // 动态新增方法，当作静态方法调用
+           
+           
+           var o = new obj();  // 当作类进行实例化对象
+           //alert(typeof(o));   
+           //o();  // 这样会报错
+           alert(o.constructor);
+           // o.look();
+           //o.say();   // 不能当作类的方法？
+           
+		</script>
+	</head>
+	<body>
+
+	</body>
+</html>
+

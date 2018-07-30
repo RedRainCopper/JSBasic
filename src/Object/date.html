@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>reg</title>
+		<meta name="author" content="Administrator" />
+		<!-- Date: 2016-04-11 -->
+		<script type="text/javascript" charset="utf-8">
+		// JavaScript中允许添加行为的类型)：可以在类型上使用proptotype来为类型添加行为。这些行为只能在类型的实例上体现。 
+		// JS中允许的类型有Array, Boolean, Date, Enumerator, Error, 
+		// Function, Number, Object, RegExp, String
+            Date.prototype.DayDiff = function(cDate, mode) {
+                try {
+                    cDate.getYear();
+                } catch(e) {
+                    return 0;
+                };
+                var base = 60 * 60 * 24 * 1000;
+                var result = Math.abs(this - cDate);
+                //alert(result);
+                switch(mode) {
+                    case "y":
+                        result /= base * 365;
+                        break;
+                    case "m":
+                        result /= base * 365 / 12;
+                        break;
+                    case "w":
+                        result /= base * 7;
+                        break;
+                    default:
+                        result /= base;
+                        break;
+                }
+                return (Math.floor(result));
+            };
+			// alert((new Date()).DayDiff((new Date(2016,4,11))));
+			
+			Number.prototype.fact=function(){
+		         var num = Math.floor(this);
+		         if(num<0)return NaN;
+		         if(num==0 || num==1)
+		             return 1;
+		         else
+		             return (num*(num-1).fact());
+		    };
+		    alert((4).fact()); 
+		</script>
+	</head>
+	<body>
+
+	</body>
+</html>
+

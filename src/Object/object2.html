@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>object</title>
+		<meta name="author" content="Administrator" />
+		<!-- Date: 2016-04-10 -->
+		<script type="text/javascript" charset="utf-8">
+		/*
+			JavaScript能够实现的面向对象的特征有：
+			·公有属性(public field)
+			·公有方法(public Method)
+			·私有属性(private field)
+			·私有方法(private field)
+			·方法重载(method overload)
+			·构造函数(constructor)
+			·事件(event)
+			·单一继承(single inherit)
+			·子类重写父类的属性或方法(override)
+			·静态属性或方法(static member)
+			*/
+			
+			function AClass(){
+				this.property = 1;
+				this.method = function(){
+					alert("method");
+				};
+			};
+			// 1 在原型上添加属性和方法
+			/*
+			AClass.prototype.property2 = 2;
+			AClass.prototype.method2 = function(){
+				alert("prototype method!");
+			};*/
+			
+			var a = new AClass();
+			
+			// 2 在对象上添加属性和方法
+			/*
+			a.property3 = 3;
+			a.method3 = function(){
+				alert("instance method!");
+			};*/
+			
+			// 3 在对象上改变属性和方法。（和普遍的面向对象的概念不同）
+			/*
+			a.property = 2;
+			a.method = function(){
+				alert("method2");
+			};*/
+			alert(a.property);
+			//alert(a.property2);
+			//alert(a.property3);
+			a.method();
+			//a.method2();
+			//a.method3();
+			
+			// 4 静态成员，静态方法
+			/*
+			AClass.staticProperty = 5;
+			AClass.staticMethod = function(){
+				alert("static method!");
+			};
+			alert(AClass.staticProperty);
+			AClass.staticMethod();*/
+		</script>
+	</head>
+	<body>
+
+	</body>
+</html>
+

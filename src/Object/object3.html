@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>object3</title>
+		<meta name="author" content="Administrator" />
+		<!-- Date: 2016-04-10 -->
+		<script type="text/javascript" charset="utf-8">
+			// 1 js 实现继承
+			
+			function AClass(){
+				this.propertyA = 'aa';
+				this.methodA = function(){
+					alert("a method!");
+				};
+			};
+			function BClass(){
+				this.propertyB = 2;
+				this.methodB = function(){
+					alert("b method!");
+				};
+			};
+			/*
+			BClass.prototype = new AClass(); // 这一步就是继承父类
+			var b = new BClass();
+			alert(b.propertyA);
+			alert(b.propertyB);
+			b.methodA();
+			b.methodB();
+			*/
+			
+			// 2 (如何在子类中重新定义父类的成员)：这个例子说明了子类如何重写父类的属性或方法。
+			BClass.prototype = new AClass(); // 这一步就是继承父类
+			BClass.prototype.propertyA = 'AA';
+			BClass.prototype.methodA = function(){
+				alert("A method!");
+			};
+			var b = new BClass();
+			alert(b.propertyA);
+			alert(b.propertyB);
+			b.methodA();
+			b.methodB();
+			
+			
+
+		</script>
+	</head>
+	<body>
+
+	</body>
+</html>
+

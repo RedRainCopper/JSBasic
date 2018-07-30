@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Prototype</title>
+		<meta name="author" content="Administrator" />
+		<link rel="" href="" type="text/css"/>
+		<script type="text/javascript" charset="utf-8">
+			// 对象.prototype = 原型对象  对象.constructor.prototype
+			// 构造函数.prototype = 原型对象
+			function fn(name,age){
+				this.name = name;
+				this.age = age;
+			}
+			
+			var obj = new fn('小三',10);
+			alert(obj.name);
+			alert(obj.age);
+			alert(obj.__proto__.__proto__.__proto__);
+			// alert(obj.prototype);//undefined 未定义，被当成对象的属性
+			// alert(obj.prototype.constructor);
+			
+			alert(fn.prototype.constructor);  // 构造函数.prototype = 原型对象   
+			// 原型对象.constructor = 构造函数
+		</script>
+	</head>
+	<body>
+
+	</body>
+</html>
+

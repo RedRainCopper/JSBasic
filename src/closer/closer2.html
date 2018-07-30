@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>javascript闭包</title>
+		<meta name="author" content="Administrator" />
+		<!-- Date: 2016-04-11 -->
+		<script type="text/javascript" charset="utf-8">
+		 	/*
+		 	 * var JQuery;
+		 	 * JQuery.display = function(){}; 为对象变量添加方法
+		 	 * js变量
+		 	 * 1、 变量可以指向任意一种数据类型，值类型，引用类型（function，Object）
+		 	 * 2、 可以为变量动态的增加  属性 或者 方法
+		 	 */
+            (function (){
+            	var JQuery = new Object(); // 引用地址的才能做为实现闭包的局部变量,给外变量引用
+            	JQuery.display = function(){
+            		alert("hello");
+            	};
+            	window.$ = JQuery; // 这里的window.$ $就是全局变量
+            })();
+            $.display();
+            
+		</script>
+	</head>
+	<body>
+
+	</body>
+</html>
+

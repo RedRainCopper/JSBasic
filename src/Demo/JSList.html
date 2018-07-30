@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>用JS的方式实现List集合</title>
+		<meta name="author" content="Administrator" />
+		<!-- Date: 2016-04-11 -->
+		<script type="text/javascript" charset="utf-8">
+			var List = function () {
+				this.dataSource = 0;
+				this.size = 0;
+				this.position = 0;
+			};
+			List.prototype.constructor = List;
+			List.prototype.append =  function(element){
+					this.dataSource[this.size++] = element;
+			};
+			List.prototype.toString =  function(){
+					return this.dataSource;
+			};
+			/*
+			List.prototype = {
+				// 添加
+				append : function(element){
+					this.dataSource[this.size++] = element;
+				},
+				// 在指定位置添加元素
+				
+				// 删除
+				remove : function(element){
+					this.dataSource[this.size++] = element;
+				},
+				// 在指定位置删除元素
+				// 更改
+				upate : function(i,element){
+					this.dataSource[i] = element;
+				},
+				// 获取指定位置元素
+				get : function (i){
+					return this.dataSource[i];
+				},
+				// 判断是否集合是否存在指定元素
+				// toString
+				toString : function (){
+					return this.dataSource;
+				}
+			};
+			*/
+			var list = new List();
+			list.append('redrain');
+			list.append('copper');
+			alert(list);
+		</script>
+	</head>
+	<body>
+
+	</body>
+</html>
+

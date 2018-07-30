@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>object5</title>
+		<meta name="author" content="Administrator" />
+		<!-- Date: 2016-04-10 -->
+		<script type="text/javascript" charset="utf-8">
+			// 1 JSON方式定义类
+			/*
+			var MoneyCountevent = {
+				eventid : 1,
+				save : function(){
+					return "saving..";
+				}
+			};
+			var moneyCountevent = new MoneyCountevent();  // 无法创建实例
+			alert(moneyCountevent.eventid);
+			alert(moneyCountevent.save());
+			*/
+			
+			// 2 工厂方式
+			/*
+			function factory(objectName){
+				var o = new Object();
+				o.name = objectName;
+				o.say = function(){
+					return "my name is "+this.name;
+				};
+				return o;
+			}
+			var o1 = factory("o1");
+			alert(o1.name);
+			alert(o1.say());
+			*/
+			// 问题：每创建一个对象，对象的方法是新对象，浪费资源
+			
+			// 3 构造函数方式
+			/*
+			function construtor(objectName){
+				this.name = objectName ;
+				this.say = function(){
+					return "my name is "+this.name;
+				};
+			};
+			var o1 = new construtor("o1");
+			alert(o1.name);
+			alert(o1.say());
+			*/
+			// 问题：创建对象时比工厂方法更于理解。和工厂方法一样，每个对象都有自己的方法，浪费资源.
+			
+			// 4 原型方式
+			/*
+			function Clazz(){
+				Clazz.prototype.name = "";
+				Clazz.prototype.say = function(){
+					return "my name is "+this.name;
+				};
+			}
+			var o1 = new Clazz("o1");
+			var o2 = new Clazz("o1");
+			alert(o1.name);
+			alert(o1.say()==o2.say());  // true 
+			*/
+			// 问题：无法在构造方法中传递参数，所有对象共享属性。
+			// 优点：对象共用方法，节约资源的。
+		
+			// 5 构造函数 + 原型
+			/*
+			function Clazz(name){
+				this.name = name;
+			};
+			Clazz.prototype.say = function(){
+				return "my name is "+this.name;
+			};
+			var o1 = new Clazz("o1");
+			var o2 = new Clazz("o1");
+			alert(o1.name);
+			alert(o1.say ==o2.say ); // true
+			*/
+			// 优点：解决了前面提到的问题
+			// 问题：封装不够完美。
+			
+			// 6 动态原型
+			function Clazz(name){
+				this.name = name;
+				if(Clazz.prototype.say == undefined){
+					Clazz.prototype.say = function(){
+						return "my name is "+this.name;
+					};
+				}
+			};
+			var o1 = new Clazz("o1");
+			var o2 = new Clazz("o2");
+			alert(o1.name);
+			alert(o2.name);
+			alert(o1.say == o2.say); // true.
+			// 结论：一种完美的解决方案。
+		</script>
+	</head>
+	<body>
+
+	</body>
+</html>
+

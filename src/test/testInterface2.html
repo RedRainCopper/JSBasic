@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Interface2</title>
+		<meta name="author" content="Administrator" />
+		<link rel="" href="" type="text/css"/>
+		<script type="text/javascript" charset="utf-8">
+            window.onload = function() {
+                console.log("hello debug world1");
+            };
+            // js 实现java接口实现的编程模式
+            // 实现方法：1 声明式  //2 属性检测方法 // 3 鸭式辨型法
+            // 2 属性检测法 ：通过检测实例对象有没有接口的方法属性来判断
+            // 只能检验有没有实现接口，不能校验有没有实现接口的所有方法
+            function CompositeImpl() {
+                this.implementMethods = ['Composite', 'Formitem'];
+            };
+            CompositeImpl.prototype.add = function() {
+                alert("add");
+            };
+            CompositeImpl.prototype.remove = function() {
+                alert("remove");
+            };
+            CompositeImpl.prototype.update = function() {
+                alert("update");
+            };
+
+            function isImplement(instance) {
+                if (!checkImplement(instance, 'Composite', 'Formitem')) {
+                    throw new Error("the instance does not implements interface completely!");
+                }
+            }
+
+            function checkImplement(instance) {
+                for (var i = 1; i < arguments.length; i++) {
+                    alert("----" + arguments[i]);
+                    var isImplement = false;
+                    for (var j = 0; j < instance.implementMethods.length; j++) {
+                        alert(instance.implementMethods[j]);
+                        if (instance.implementMethods[j] == arguments[i]) {
+                            isImplement = true;
+                            break;
+                        }
+                    }
+                    alert(isImplement);
+                    if (!isImplement) {
+                        return isImplement;
+                    }
+                }
+                return true;
+            }
+
+            // 2.3 测试
+            var obj = new CompositeImpl();
+            isImplement(obj);
+		</script>
+	</head>
+	<body>
+
+	</body>
+</html>
+

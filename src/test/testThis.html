@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>javascrip This</title>
+		<meta name="author" content="Administrator" />
+		<link rel="" href="" type="text/css"/>
+		<script src="test2file.js"></script>
+		<!-- Date: 2016-04-11 -->
+		<script type="text/javascript" charset="utf-8">
+			// this 关键字的用法
+			// 1 纯粹的函数调用
+			// var x = 5;
+			// function fn1(){
+				// // this.x = 10;  // 普通函数调用，则调用者是全局对象 window
+				// alert(this.x);
+			// }
+			// fn1();
+			
+			// 2 做为对象的方法调用
+			// var o = {};
+			// function fn2 (){
+				// alert(this.x);
+			// }
+			// o.x = 20;
+			// o.method = fn2;
+			// o.method();
+			
+			// 3 做为构造函数调用
+			// function Fn3 (){
+				// this.x = 12;
+			// }
+			// var o = new Fn3();
+			// alert(o.x);
+			
+			
+			//4 apply 调用        
+			var x = 3;
+			function fn4 (){
+				alert(this.x);
+			}
+			fn4.apply();
+		</script>
+	</head>
+	<body>
+
+	</body>
+</html>
+

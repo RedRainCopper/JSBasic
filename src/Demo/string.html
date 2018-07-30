@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>string</title>
+		<meta name="author" content="Administrator" />
+		<!-- Date: 2016-04-11 -->
+		<script type="text/javascript" charset="utf-8">
+		    String.prototype.cnLength = function(){
+		    	var arr = this.match(/[^\x00-\xff]/ig);
+		    	return this.length+(arr==null?0:arr.length);
+		    };
+		//alert("EaseWe空间Spaces".cnLength());
+		
+　　String.prototype.left = function(num,mode){
+         if(!/\d+/.test(num))return(this);
+         var str = this.substr(0,num);
+         if(!mode) return str;
+         var n = str.Tlength() - str.length;
+         num = num - parseInt(n/2);
+         return this.substr(0,num);
+     };
+		alert("EaseWe空间Spaces".left(8)); // 显示 EaseWe空间
+     alert("EaseWe空间Spaces".left(8,true)); // 显示 EaseWe空
+     
+     
+		</script>
+	</head>
+	<body>
+
+	</body>
+</html>
+

@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>javascrip </title>
+		<meta name="author" content="Administrator" />
+		<link rel="" href="" type="text/css"/>
+		<script src="test2file.js"></script>
+		<!-- Date: 2016-04-11 -->
+		<script type="text/javascript" charset="utf-8">
+           function fn () {
+           	this.i = 10; //new 出来的对象不共用
+           }
+           // fn.prototype.i = 3; // 原型中的非引用属性也是不共用的
+           fn.prototype.add = function(){
+           	alert('add');
+           };
+           
+           var obj = new fn();
+           alert(fn.prototype);// 自身的原型对象
+           alert(fn.__proto__);// 自己从哪个来的 function()
+           alert(obj.__proto__); // 自己从哪个来的
+           alert(fn.constructor); // 构造函数 Function();
+           alert(obj.constructor); // 构造函数 fn();
+           
+           // alert(obj.constructor.prototype === fn.prototype);
+           // obj.i += 5;
+           // alert(obj.i);
+           // var obj2 = new fn();
+           // alert('------'+obj2.i);
+           //alert(obj);
+           //alert(fn.i); // undefined
+		</script>
+	</head>
+	<body>
+
+	</body>
+</html>
+

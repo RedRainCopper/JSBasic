@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        // type of;
+
+        // instanceof运算符用来判断一个构造函数的prototype属性所指向的对象是否存在另外一个要检测对象的原型链上
+        // 1、继承中判断实例是否属于它的父类
+        function Person(){};
+        function Student(){};
+        var p =new Person();
+        Student.prototype=p;//继承原型
+        var s=new Student();
+        console.log(s instanceof Student);//true
+        console.log(s instanceof Person);//true
+
+        // 2、复杂用法
+        function Person() {}
+        console.log(Object instanceof Object);     //true
+        //第一个Object的原型链：Object=>
+        //Object.__proto__ => Function.prototype=>Function.prototype.__proto__=>Object.prototype
+        //第二个Object的原型：Object=> Object.prototype
+
+        console.log(Function instanceof Function); //true
+        //第一个Function的原型链：Function=>Function.__proto__ => Function.prototype
+        //第二个Function的原型：Function=>Function.prototype
+
+        console.log(Function instanceof Object);   //true
+        //Function=>
+        //Function.__proto__=>Function.prototype=>Function.prototype.__proto__=>Object.prototype
+        //Object => Object.prototype
+
+        console.log(Person instanceof Function);      //true
+        //Person=>Person.__proto__=>Function.prototype
+        //Function=>Function.prototype
+
+        console.log(String instanceof String);   //false
+        //第一个String的原型链：String=>
+        //String.__proto__=>Function.prototype=>Function.prototype.__proto__=>Object.prototype
+        //第二个String的原型链：String=>String.prototype
+
+        console.log(Boolean instanceof Boolean); //false
+        //第一个Boolean的原型链：Boolean=>
+        //Boolean.__proto__=>Function.prototype=>Function.prototype.__proto__=>Object.prototype
+        //第二个Boolean的原型链：Boolean=>Boolean.prototype
+
+        console.log(Person instanceof Person); //false
+        //第一个Person的原型链：Person=>
+        //Person.__proto__=>Function.prototype=>Function.prototype.__proto__=>Object.prototype
+        //第二个Person的原型链：Person=>Person.prototype
+
+        // 3、总结
+        function _instanceof(A, B) {
+            var O = B.prototype;// 取B的显示原型
+            A = A.__proto__;// 取A的隐式原型
+            while (true) {
+                //Object.prototype.__proto__ === null
+                if (A === null)
+                    return false;
+                if (O === A)// 这里重点：当 O 严格等于 A 时，返回 true
+                    return true;
+                A = A.__proto__;
+            }
+        }
+
+        // isPrototypeOf(Object) 检测原型
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

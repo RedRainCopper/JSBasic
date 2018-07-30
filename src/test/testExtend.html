@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Extend</title>
+		<meta name="author" content="Administrator" />
+		<link rel="" href="" type="text/css"/>
+		<script type="text/javascript" charset="utf-8">
+			// 简单继承,不能继承 A 的原型对象
+			// function A(x){
+				// this.x = x;
+			// }
+			// function B(x,y){
+				// // this.tempObj = A;
+				// // this.temoObj(x);   // 创建临时对象，手动调用父类
+				// // delete this.tempObj;
+				// A.call(this,x);  // 更简单
+				// this.y = y;
+			// }
+			// 当在B内部执行了this.x=x后（这里的this是B的对象），B当然就拥有了x属性，当然B的x属性和A的x属性两者是独立，所以并不能算严格的继承。
+			// 这两种方法都有将this传递到A的执行里，this指向的是B的对象，这就是为什么不直接A(x)的原因。这
+			// 种继承方式即是类继承（js没有类，这里只是指构造函数），
+			// 虽然继承了A构造对象的所有属性方法，但是不能继承A的原型对象的成员。而要实现这个目的，就是在此基础上再添加原型继承。
+			
+			// 继承A的原型对象的成员
+			function A(x){
+				this.x = x;
+			};
+			A.prototype.a = "a";
+			function B(x,y){
+				A.call(this,x);  // 更简单
+				this.y = y;
+			};
+			B.prototype.b1 = function(){
+				alert("b1");
+			};
+			B.prototype = new A();  // B的原型指向实例对象
+			B.prototype.b2 = function(){
+				alert("b2");
+			};
+			
+			//B.prototype.constructor = B;  // B的原型发生改变，B的原型的构造函数指回B自身
+			var obj = new B(1,3);
+			var cons = obj.constructor;
+			alert(obj.y);
+		</script>
+	</head>
+	<body>
+
+	</body>
+</html>
+

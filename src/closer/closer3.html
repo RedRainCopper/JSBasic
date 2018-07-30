@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>javascript闭包</title>
+		<meta name="author" content="Administrator" />
+		<!-- Date: 2016-04-11 -->
+		<script type="text/javascript" charset="utf-8">
+			// 1 读取（编译） 2 执行
+		 	/*
+			 alert("first");
+						  display();
+						  alert("second");
+						  */
+			/*
+			 var i = "global";
+						 function fn1 (){
+							 alert(i); // underfined
+							 var i = "local";
+							 alert(i); // local
+						 }
+												   fn1();*/
+			
+            
+		</script>
+		<script>
+			alert("first");
+			  //display();
+			  alert("second");
+			//var i = 10;  //上面运行出错，但js已经读取编译，将变量声明为undefined了，没执行的时候；
+		</script>
+		<script>
+			alert(i);
+		</script>
+	</head>
+	<body>
+
+	</body>
+</html>
+

@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>object4</title>
+		<meta name="author" content="Administrator" />
+		<!-- Date: 2016-04-10 -->
+		<script type="text/javascript" charset="utf-8">
+			// 3 javascript中的对象就是一个指向prototype的指针和一个自身的属性列表。
+			//   javascript创建对象时采用了写时复制的理念。
+			/* 只有构造器才具有prototype属性，原型链继承就是创建一个新的指针，指向构造器的prototype属性。
+			   prototype属性之所以特别，是因为javascript时读取属性时的遍历机制决定的。本质上它就是一个普通的指针。
+			   构造器包括: 
+				1.Object
+				2.Function
+				3.Array
+				4.Date
+				5.String
+			*/
+			function Person(name){
+				this.name = name;
+			};
+			Person.prototype.getName = function(){
+				return this.name;
+			};
+			
+			var p = new Person("chy");
+			//alert(p.getName());
+			// 1 获取 Person 的构造器
+			
+			//alert(Person);
+			//alert(Person == Person.toString()); // 对象继承自Object，所以也有toString()方法
+			//alert(Person.prototype.constructor === Person); // true Person.prototype.constructor 就是构造函数
+			//alert(p.constructor === Person);  // true 这是因为p本身不包含constructor属性，所以这里其实调用的是Person.prototype.constructor
+
+			
+			/*
+			1.表明Person继承自Animal
+			2. 表明p2是Person的实例
+			*/
+			//我们修改一下prototype属性的指向，让Person能获取Animal中的prototype属性中的方法。
+			function Animal(){
+				
+			};
+			
+			/*
+			Person.prototype = new Animal(); //之所以不采用Person.prototype  = Animal.prototype,是因为new 还有其他功能，最后总结。 
+			var p2 = new Person("master");
+			alert(Person.prototype.constructor === Person); // false 构造器已经指向Animal了
+			////(p2 -> Person.prototype -> Animal.prototype, 所以p2.constructor其实就是Animal.prototype.constructor)
+			alert(p2.constructor === Person);  // false 
+			*/
+			
+			Person.prototype = new Animal(); // 1.表明Person继承自Animal,但要表明父类得用 getPrototypeOf 方法
+			Person.prototype.construct = Person; // 2. 表明p2是Person的实例
+			var p2 = new Person("master");
+			alert(p2.construct);
+			// 我们不能直接使用prototype属性来表示父类是谁，而是用getPrototypeOf()方法来知道父类是谁。
+			alert( Object.getPrototypeOf(Person.prototype).constructor );
+			
+			/*
+		           最后总结一下:
+			当代码var p = new Person()执行时，new 做了如下几件事情：
+			1 创建一个空白对象
+			2 创建一个指向Person.prototype的指针
+			3 将这个对象通过this关键字传递到构造函数中并执行构造函数。
+			
+			如果采用Person.prototype  = Animal.prototype来表示Person继承自Animal, 
+			instanceof方法也同样会显示p也是Animal的实例，返回为true.
+			之所以不采用此方法,是因为下面两个原因：
+			1.new 创建了一个新对象，这样就避免了设置Person.prototype.constructor = Person 
+			的时候也会导致Animal.prototype.constructor的值变为Person,
+			而是动态给这个新创建的对象一个constructor实例属性，
+			这样实例上的属性constructor就覆盖了Animal.prototype.constructor，
+			这样Person.prototype.constructor和Animal.prototype.contructor就分开了。
+
+			2.Animal自身的this对象的属性没办法传递给Person
+			通过使用 hasOwnProperty()方法,什么时候访问的是实例属性,什么时候访问的是原型属性就 一清二楚了。
+
+			 */
+		</script>
+	</head>
+	<body>
+
+	</body>
+</html>
+

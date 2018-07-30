@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>array</title>
+		<meta name="author" content="Administrator" />
+		<!-- Date: 2016-04-10 -->
+		<script type="text/javascript" charset="utf-8">
+            /**
+             *  push 和 pop 方法
+             
+            var arr = [new Date(), false];
+            var result = arr.push(1, 2, true);
+            //push方法向数组中追加元素(返回值为新数组的长度)
+            alert(arr);
+            alert(result);
+            var obj = arr.pop();
+            //从数组的尾部移除一个元素(返回值为移除的元素)
+            alert(arr);
+            alert(obj);
+			*/
+			
+            /**
+             * shift 和 unshift 方法
+             */
+            var  arr = [1,2,3, true , new Date()];
+            var r1 = arr.shift();			//从头部移除一个元素(返回移除的元素)
+            alert(arr);
+            alert(r1);
+            var r2 = arr.unshift(10,false);	//从头部插入多个元素(返回新数组的长度)
+            alert(arr);
+            alert(r2);
+		</script>
+	</head>
+	<body>
+
+	</body>
+</html>
+

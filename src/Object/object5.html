@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>object5</title>
+		<meta name="author" content="Administrator" />
+		<!-- Date: 2016-04-10 -->
+		<script type="text/javascript" charset="utf-8">
+			/*
+		           最后总结一下:
+			当代码var p = new Person()执行时，new 做了如下几件事情：
+			1 创建一个空白对象
+			2 创建一个指向Person.prototype的指针
+			3 将这个对象通过this关键字传递到构造函数中并执行构造函数。
+			
+			如果采用Person.prototype  = Animal.prototype来表示Person继承自Animal, 
+			instanceof方法也同样会显示p也是Animal的实例，返回为true.
+			之所以不采用此方法,是因为下面两个原因：
+			1.new 创建了一个新对象，这样就避免了设置Person.prototype.constructor = Person 
+			的时候也会导致Animal.prototype.constructor的值变为Person,
+			而是动态给这个新创建的对象一个constructor实例属性，
+			这样实例上的属性constructor就覆盖了Animal.prototype.constructor，
+			这样Person.prototype.constructor和Animal.prototype.contructor就分开了。
+
+			2.Animal自身的this对象的属性没办法传递给Person
+			通过使用 hasOwnProperty()方法,什么时候访问的是实例属性,什么时候访问的是原型属性就 一清二楚了。
+
+			 */
+			
+			function Person(name){
+				this.name = name;
+				/*
+				this.getName = function(){
+					return this.name;
+				};*/
+			};
+			
+			function Animal(name){
+				this.name = name;
+			};
+			
+			Person.prototype = new Animal(); // 继承
+			Person.prototype.constructor = Person;
+			Person.prototype.getName = function(){
+				return this.name;
+			};  // 注意：动态绑定方法，必须在定义父类之后
+			var p = new Person("chy");
+			// alert(p.getName());  // 问题：如果是继承，则访问不了子类的方法
+			for(var att in p){
+				alert(att);
+			}
+		</script>
+	</head>
+	<body>
+
+	</body>
+</html>
+
